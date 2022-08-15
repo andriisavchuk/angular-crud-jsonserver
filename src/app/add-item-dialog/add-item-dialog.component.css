@@ -1,0 +1,15 @@
+mat-form-field {
+  width: 100%;
+}
+
+.items-statuses {
+  margin-top: 30px;
+}
+
+mat-radio-button {
+  margin-right: 10px;
+}
+
+.selected-status {
+  margin: 15px 0;
+}
