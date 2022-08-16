@@ -1,64 +1,79 @@
 <h1 mat-dialog-title="">Add Item</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Item Name</mat-label>
-    <input matInput placeholder="Add Item" />
-    <mat-hint>Name of the Item</mat-hint>
-  </mat-form-field>
+  <form [formGroup]="itemForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Item Name</mat-label>
+      <input matInput formControlName="itemName" placeholder="Add Item" />
+      <mat-hint>Name of the Item</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Item Category</mat-label>
-    <mat-select placeholder="Select Item Category">
-      <mat-option *ngFor="let item of itemsCategory">{{
-        item.category
-      }}</mat-option>
-    </mat-select>
-    <mat-hint>Category to which item belongs</mat-hint>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" />
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <div class="items-statuses">
-    <label id="itemStatuses">Pick your item status : </label>
-    <mat-radio-group
-      aria-labelledby="itemStatuses"
-      class="items-statuses-radio-group"
-      [(ngModel)]="selectedStatus"
-    >
-      <mat-radio-button
-        class="items-statuse-radio-button"
-        *ngFor="let status of itemStatuses"
-        [value]="status"
+    <mat-form-field appearance="outline">
+      <mat-label>Item Category</mat-label>
+      <mat-select
+        formControlName="itemCategory"
+        placeholder="Select Item Category"
       >
-        {{ status }}
-      </mat-radio-button>
-    </mat-radio-group>
+        <mat-option *ngFor="let item of itemsCategory" [value]="item.category">{{
+          item.category
+        }}</mat-option>
+      </mat-select>
+      <mat-hint>Category to which item belongs</mat-hint>
+    </mat-form-field>
 
-    <div class="selected-status">
-      Selected item status : {{ selectedStatus }}
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        formControlName="dateSubmitted"
+        [matDatepicker]="picker"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="items-statuses">
+      <label id="itemStatuses">Pick your item status : </label>
+      <mat-radio-group
+        aria-labelledby="itemStatuses"
+        class="items-statuses-radio-group"
+        formControlName="itemStatus"
+        [(ngModel)]="selectedStatus"
+      >
+        <mat-radio-button
+          class="items-statuse-radio-button"
+          *ngFor="let status of itemStatuses"
+          [value]="status"
+        >
+          {{ status }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div class="selected-status">
+        Selected item status : {{ selectedStatus }}
+      </div>
     </div>
-  </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Item Price</mat-label>
-    <input matInput type="number" placeholder="Item Price" />
-    <mat-hint>Price of the Item</mat-hint>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Item Price</mat-label>
+      <input
+        matInput
+        formControlName="itemPrice"
+        type="number"
+        placeholder="Item Price"
+      />
+      <mat-hint>Price of the Item</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Comment</mat-label>
-    <textarea matInput></textarea>
-    <mat-hint>Your comment</mat-hint>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea matInput formControlName="userComment"></textarea>
+      <mat-hint>Your comment</mat-hint>
+    </mat-form-field>
+  </form>
 </div>
 
 <div mat-dialog-actions [align]="'end'">
   <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-  <button mat-raised-button color="primary">Save</button>
+  <button mat-raised-button color="primary" (click)="saveItem()">Save</button>
 </div>
