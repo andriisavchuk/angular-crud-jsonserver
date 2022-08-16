@@ -1,6 +1,23 @@
 {
   "itemsList": [
-
+    {
+      "itemName": "iPhone",
+      "itemCategory": "Electronics",
+      "dateSubmitted": "2022-08-09T04:00:00.000Z",
+      "itemStatus": "Pre-Owned",
+      "itemPrice": 250,
+      "userComment": "This is owned iPhone 11s",
+      "id": 1
+    },
+    {
+      "itemName": "Brick",
+      "itemCategory": "Building Materials",
+      "dateSubmitted": "2022-08-15T04:00:00.000Z",
+      "itemStatus": "New",
+      "itemPrice": 5,
+      "userComment": "This is brick",
+      "id": 2
+    }
   ],
   "comments": [
     {
