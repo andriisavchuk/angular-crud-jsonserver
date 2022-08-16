@@ -30,6 +30,10 @@ export class AddItemDialogComponent implements OnInit {
       itemPrice: ['', Validators.required],
       userComment: ['', Validators.required],
     });
+
+    this.itemForm.get('itemStatus')?.valueChanges.subscribe((value) => {
+      this.selectedStatus = value;
+    });
   }
 
   saveItem() {
