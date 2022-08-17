@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddItemDialogComponent } from './add-item-dialog/add-item-dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { ApiService } from './services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     'itemStatus',
     'itemPrice',
     'userComment',
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -31,13 +32,15 @@ export class AppComponent implements OnInit {
     this.getAllItems();
   }
 
-  openAddItemDialog() {
-    const dialogRef = this.dialog.open(AddItemDialogComponent, {
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '50%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      if (result === 'saved') {
+        this.getAllItems();
+      }
     });
   }
 
@@ -47,7 +50,7 @@ export class AppComponent implements OnInit {
         console.log(res);
         this.dataSource = new MatTableDataSource<any>(res);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort
+        this.dataSource.sort = this.sort;
       },
       error: (err) => {
         alert('Error while fetching the Items for Data Base');
@@ -62,5 +65,18 @@ export class AppComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  editItem(row: any) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '50%',
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'updated') {
+        this.getAllItems();
+      }
+    });
   }
 }

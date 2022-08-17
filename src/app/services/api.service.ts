@@ -14,4 +14,8 @@ export class ApiService {
   getItemsFromList() {
     return this.http.get<any>('http://localhost:3000/itemsList');
   }
+
+  updateItemInTheList(data: any, id: number) {
+    return this.http.put<any>(`http://localhost:3000/itemsList/${id}`, data)
+  }
 }

@@ -12,21 +12,29 @@
     {
       "itemName": "Brick",
       "itemCategory": "Building Materials",
-      "dateSubmitted": "2022-08-15T04:00:00.000Z",
-      "itemStatus": "New",
-      "itemPrice": 5,
+      "dateSubmitted": "2022-08-16T04:00:00.000Z",
+      "itemStatus": "Used",
+      "itemPrice": 10,
       "userComment": "This is brick",
       "id": 2
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "itemName": "iPhone12",
+      "itemCategory": "Electronics",
+      "dateSubmitted": "2022-08-09T04:00:00.000Z",
+      "itemStatus": "Pre-Owned",
+      "itemPrice": 200,
+      "userComment": "This is owned iPhone 12s",
+      "id": 3
+    },
+    {
+      "itemName": "Owen",
+      "itemCategory": "Appliances",
+      "dateSubmitted": "2022-08-18T04:00:00.000Z",
+      "itemStatus": "New",
+      "itemPrice": 350,
+      "userComment": "Owen for baking",
+      "id": 4
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
