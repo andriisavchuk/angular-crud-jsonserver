@@ -10,24 +10,6 @@
       "id": 1
     },
     {
-      "itemName": "Brick",
-      "itemCategory": "Building Materials",
-      "dateSubmitted": "2022-08-16T04:00:00.000Z",
-      "itemStatus": "Used",
-      "itemPrice": 10,
-      "userComment": "This is brick",
-      "id": 2
-    },
-    {
-      "itemName": "iPhone12",
-      "itemCategory": "Electronics",
-      "dateSubmitted": "2022-08-09T04:00:00.000Z",
-      "itemStatus": "Pre-Owned",
-      "itemPrice": 200,
-      "userComment": "This is owned iPhone 12s",
-      "id": 3
-    },
-    {
       "itemName": "Owen",
       "itemCategory": "Appliances",
       "dateSubmitted": "2022-08-18T04:00:00.000Z",

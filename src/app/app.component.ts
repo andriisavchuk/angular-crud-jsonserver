@@ -79,4 +79,16 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  deleteItem(id: number) {
+    this.api.deleteItemFromList(id).subscribe({
+      next: (res) => {
+        alert('Item is deleted from Data Base');
+        this.getAllItems();
+      },
+      error: (err) => {
+        alert('Error while deleting the Item');
+      },
+    });
+  }
 }

@@ -1,10 +1,16 @@
-# CrudJsonserver
+# Simple CRUD Angular Application with JSON server as back-end
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
-## Development server
+## Development server for Angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## JSON server development mode
+
+Run `npm install -g json-server` to install to your machine.
+
+Run `json-server --watch db.json` to run it in development mode.
 
 ## Code scaffolding
 

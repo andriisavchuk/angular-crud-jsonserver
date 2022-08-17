@@ -18,4 +18,8 @@ export class ApiService {
   updateItemInTheList(data: any, id: number) {
     return this.http.put<any>(`http://localhost:3000/itemsList/${id}`, data)
   }
+
+  deleteItemFromList(id: number) {
+    return this.http.delete<any>(`http://localhost:3000/itemsList/${id}`)
+  }
 }
