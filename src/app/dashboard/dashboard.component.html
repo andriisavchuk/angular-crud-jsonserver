@@ -1,32 +1,28 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Application icon">
-    <mat-icon>developer_mode</mat-icon>
-  </button>
 
-  <span>Angular with JSON Server Application</span>
-
-  <span class="example-spacer"></span>
-
-  <button
-    (click)="openDialog()"
-    mat-raised-button
-    color="warn"
-    aria-label="Add Item"
-  >
-    Add item
-  </button>
-</mat-toolbar>
 
 <div class="container">
-  <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. Mia"
-      #input
-    />
-  </mat-form-field>
+  <div class="search-add-item">
+    <mat-form-field appearance="standard" class="search-item">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+
+    <div class="add-item">
+      <button
+        (click)="openDialog()"
+        mat-raised-button
+        color="warn"
+        aria-label="Add Item"
+      >
+        Add item
+      </button>
+    </div>
+  </div>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>

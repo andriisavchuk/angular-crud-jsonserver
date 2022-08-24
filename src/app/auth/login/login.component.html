@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="login">
+  <h1 mat-dialog-title="">Login Form</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="userEmail" placeholder="Email" />
+        <mat-hint>User's Email</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="userPassword" placeholder="Password" />
+        <mat-hint>User's Password</mat-hint>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

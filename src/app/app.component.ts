@@ -7,4 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {}
+
+  loginUser() {
+    console.log('login button');
+  }
+
+  signupUser() {
+    console.log('login button');
+  }
 }

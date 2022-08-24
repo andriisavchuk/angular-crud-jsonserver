@@ -10,7 +10,7 @@
       "id": 1
     },
     {
-      "itemName": "Owen",
+      "itemName": "Oven",
       "itemCategory": "Appliances",
       "dateSubmitted": "2022-08-18T04:00:00.000Z",
       "itemStatus": "New",
@@ -26,6 +26,15 @@
       "itemPrice": 25,
       "userComment": "Lorem ipsum",
       "id": 5
+    },
+    {
+      "itemName": "TV",
+      "itemCategory": "Electronics",
+      "dateSubmitted": "2022-08-13T04:00:00.000Z",
+      "itemStatus": "New",
+      "itemPrice": 650,
+      "userComment": "TV this is",
+      "id": 6
     }
   ]
 }

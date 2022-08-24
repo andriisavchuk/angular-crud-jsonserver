@@ -1,7 +1,3 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
 .container {
   max-width: 1180px;
   margin: 15px auto;
@@ -14,4 +10,22 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.search-add-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-add-item .search-item {
+  width: 75%;
+}
+
+.search-add-item .add-item {
+  display: flex;
+}
+
+.search-add-item .add-item button {
+  margin: auto 0;
 }

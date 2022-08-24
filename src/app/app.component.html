@@ -1,1 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Application icon">
+    <mat-icon>developer_mode</mat-icon>
+  </button>
+
+  <span>Angular with JSON Server Application</span>
+
+  <span class="example-spacer"></span>
+  <button
+    (click)="loginUser()"
+    mat-raised-button
+    color="accent"
+    aria-label="Login"
+    class="login-button"
+  >
+    Login
+  </button>
+
+  <button
+    (click)="signupUser()"
+    mat-raised-button
+    color="warn"
+    aria-label="Signup"
+  >
+    Signup
+  </button>
+</mat-toolbar>
 <router-outlet></router-outlet>
