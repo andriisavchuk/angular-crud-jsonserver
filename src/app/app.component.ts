@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   ngOnInit() {}
 
-  loginUser() {
+  goToLoginPage() {
     console.log('login button');
   }
 
-  signupUser() {
-    console.log('login button');
+  goToSubmitPage() {
+    console.log('signup button');
   }
 }
