@@ -1,0 +1,17 @@
+.signup {
+  width: 50%;
+  margin: 15px auto;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup form mat-form-field {
+  margin-bottom: 20px;
+}
+
+.signup-button {
+  width: 20%;
+}

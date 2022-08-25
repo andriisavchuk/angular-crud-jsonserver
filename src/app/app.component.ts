@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  constructor(private router: Router) {}
   ngOnInit() {}
 
   goToLoginPage() {
-    console.log('login button');
+    this.router.navigate(['login']);
   }
 
   goToSubmitPage() {
-    console.log('signup button');
+    this.router.navigate(['signup']);
   }
 }

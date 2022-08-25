@@ -11,3 +11,7 @@
 .login form mat-form-field {
   margin-bottom: 20px;
 }
+
+.login-button {
+  width: 20%;
+}
