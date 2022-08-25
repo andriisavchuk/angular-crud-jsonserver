@@ -37,5 +37,12 @@
       "id": 7
     }
   ],
-  "signedUsers": []
+  "signedUsers": [
+    {
+      "userName": "Clint Eastwood",
+      "userEmail": "clint@gmail.com",
+      "userPassword": "KYWr0dt2T0TiZNtM6cV7HA==",
+      "id": 1
+    }
+  ]
 }

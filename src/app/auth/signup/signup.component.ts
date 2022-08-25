@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CryptojsService } from '../../services/cryptojs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private snackBar: MatSnackBar,
-    private cryptojs: CryptojsService
+    private cryptojs: CryptojsService,
+    private router: Router
   ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -28,9 +30,18 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   signup() {
-    const user = this.signUpForm.value;
-    user.userPassword = this.cryptojs.encryptValue('123456$#@$^@1ERF', user.userPassword);
-    this.snackBar.open('You are successfully signed up');
-    console.log('signup user', user);
+    if (this.signUpForm.valid) {
+      const user = this.signUpForm.value;
+      user.userPassword = this.cryptojs.encryptValue(
+        '123456$#@$^@1ERF',
+        user.userPassword
+      );
+
+      this.api.signupUser(user).subscribe((res) => console.log(res));
+      this.snackBar.open('You are successfully signed up');
+      this.router.navigate(['dashboard']);
+
+      console.log('signup user', user);
+    }
   }
 }
