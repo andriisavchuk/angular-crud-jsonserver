@@ -22,4 +22,8 @@ export class ApiService {
   deleteItemFromList(id: number) {
     return this.http.delete<any>(`http://localhost:3000/itemsList/${id}`)
   }
+
+  signupUser(data: any) {
+    return this.http.post<any>('http://localhost:3000/signedUsers', data);
+  }
 }

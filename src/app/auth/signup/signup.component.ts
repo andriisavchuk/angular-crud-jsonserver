@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -9,10 +11,14 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class SignupComponent implements OnInit {
   signUpForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    private snackBar: MatSnackBar
+  ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', Validators.required],
-      userEmail: ['', Validators.required, Validators.email],
+      userEmail: ['', [Validators.required, Validators.email]],
       userPassword: ['', Validators.required],
     });
   }
@@ -20,6 +26,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   signup() {
-    console.log('signup user');
+    const user = this.signUpForm.value;
+    this.snackBar.open('You are successfully signed up');
+    console.log('signup user', user);
   }
 }

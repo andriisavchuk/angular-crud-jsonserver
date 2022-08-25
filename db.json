@@ -13,19 +13,10 @@
       "itemName": "Oven",
       "itemCategory": "Appliances",
       "dateSubmitted": "2022-08-18T04:00:00.000Z",
-      "itemStatus": "New",
+      "itemStatus": "Pre-Owned",
       "itemPrice": 350,
       "userComment": "Owen for baking",
       "id": 4
-    },
-    {
-      "itemName": "ConcreteBrick",
-      "itemCategory": "Building Materials",
-      "dateSubmitted": "2022-08-17T04:00:00.000Z",
-      "itemStatus": "New",
-      "itemPrice": 25,
-      "userComment": "Lorem ipsum",
-      "id": 5
     },
     {
       "itemName": "TV",
@@ -35,6 +26,16 @@
       "itemPrice": 650,
       "userComment": "TV this is",
       "id": 6
+    },
+    {
+      "itemName": "ConcreteBrick",
+      "itemCategory": "Building Materials",
+      "dateSubmitted": "2022-08-12T04:00:00.000Z",
+      "itemStatus": "New",
+      "itemPrice": 15,
+      "userComment": "brick for house",
+      "id": 7
     }
-  ]
+  ],
+  "signedUsers": []
 }

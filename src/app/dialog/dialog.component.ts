@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog',
@@ -26,6 +27,7 @@ export class DialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private dialogRef: MatDialogRef<DialogComponent>,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public editData: any
   ) {}
 
@@ -62,13 +64,16 @@ export class DialogComponent implements OnInit {
     if (!this.editData) {
       if (this.itemForm.valid) {
         this.api.addItemToList(this.itemForm.value).subscribe({
-          next: (res) => {
-            alert('Item is added to the Data Base');
+          next: () => {
+            this.snackBar.open('Item is added to the Data Base');
             this.itemForm.reset();
             this.dialogRef.close('saved');
           },
-          error: () => {
-            alert('Error while adding the item to the Data Base');
+          error: (err) => {
+            this.snackBar.open(
+              'Error while adding the item to the Data Base',
+              err
+            );
           },
         });
       }
@@ -79,13 +84,13 @@ export class DialogComponent implements OnInit {
 
   updateItem(data: any, id: number) {
     this.api.updateItemInTheList(data, id).subscribe({
-      next: (res) => {
-        alert('Item is updated');
+      next: () => {
+        this.snackBar.open('Item is updated');
         this.itemForm.reset();
         this.dialogRef.close('updated');
       },
-      error: () => {
-        alert('Error while editing the item');
+      error: (err) => {
+        this.snackBar.open('Error while editing the item', err);
       },
     });
   }

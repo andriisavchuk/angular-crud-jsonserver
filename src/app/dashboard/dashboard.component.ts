@@ -1,15 +1,16 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {MatDialog} from "@angular/material/dialog";
-import {ApiService} from "../services/api.service";
-import {DialogComponent} from "../dialog/dialog.component";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '../services/api.service';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = [
@@ -26,7 +27,11 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: ApiService) {}
+  constructor(
+    private dialog: MatDialog,
+    private api: ApiService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.getAllItems();
@@ -47,13 +52,12 @@ export class DashboardComponent implements OnInit {
   getAllItems() {
     this.api.getItemsFromList().subscribe({
       next: (res) => {
-        console.log(res);
         this.dataSource = new MatTableDataSource<any>(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error: (err) => {
-        alert('Error while fetching the Items for Data Base');
+        this.snackBar.open('Error while fetching the Items for Data Base', err);
       },
     });
   }
@@ -83,13 +87,12 @@ export class DashboardComponent implements OnInit {
   deleteItem(id: number) {
     this.api.deleteItemFromList(id).subscribe({
       next: (res) => {
-        alert('Item is deleted from Data Base');
+        this.snackBar.open('Item is deleted from the Data Base');
         this.getAllItems();
       },
       error: (err) => {
-        alert('Error while deleting the Item');
+        this.snackBar.open('Error while deleting the Item', err);
       },
     });
   }
-
 }
