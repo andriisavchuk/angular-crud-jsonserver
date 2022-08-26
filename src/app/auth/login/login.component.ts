@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CryptojsService } from '../../services/cryptojs.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private api: ApiService,
     private snackBar: MatSnackBar,
     private cryptojs: CryptojsService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.loginForm = this.formBuilder.group({
       userEmail: ['', [Validators.required, Validators.email]],
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
         });
 
         if (validatedUser) {
+          this.loginService.isUserLoggedIn.next(true);
           this.router.navigate(['dashboard']);
           this.snackBar.open('You are successfully logged in');
         } else {

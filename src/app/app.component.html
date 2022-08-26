@@ -7,6 +7,7 @@
 
   <span class="example-spacer"></span>
   <button
+    *ngIf="!isUserLoggedIn"
     (click)="goToLoginPage()"
     mat-raised-button
     color="accent"
@@ -17,12 +18,23 @@
   </button>
 
   <button
+    *ngIf="!isUserLoggedIn"
     (click)="goToSubmitPage()"
     mat-raised-button
     color="warn"
     aria-label="Signup"
   >
     Signup
+  </button>
+
+  <button
+    *ngIf="isUserLoggedIn"
+    (click)="logout()"
+    mat-raised-button
+    color="warn"
+    aria-label="Signup"
+  >
+    Logout
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>
