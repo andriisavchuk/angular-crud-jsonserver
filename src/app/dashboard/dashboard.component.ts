@@ -56,8 +56,8 @@ export class DashboardComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error: (err) => {
-        this.snackBar.open('Error while fetching the Items for Data Base', err);
+      error: () => {
+        this.snackBar.open('Error while fetching the Items for Data Base');
       },
     });
   }
@@ -86,12 +86,12 @@ export class DashboardComponent implements OnInit {
 
   deleteItem(id: number) {
     this.api.deleteItemFromList(id).subscribe({
-      next: (res) => {
+      next: () => {
         this.snackBar.open('Item is deleted from the Data Base');
         this.getAllItems();
       },
-      error: (err) => {
-        this.snackBar.open('Error while deleting the Item', err);
+      error: () => {
+        this.snackBar.open('Error while deleting the Item');
       },
     });
   }

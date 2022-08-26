@@ -37,11 +37,15 @@ export class SignupComponent implements OnInit {
         user.userPassword
       );
 
-      this.api.signupUser(user).subscribe((res) => console.log(res));
-      this.snackBar.open('You are successfully signed up');
-      this.router.navigate(['dashboard']);
-
-      console.log('signup user', user);
+      this.api.signupUser(user).subscribe({
+        next: () => {
+          this.snackBar.open('You are successfully signed up');
+          this.router.navigate(['login']);
+        },
+        error: () => {
+          this.snackBar.open('Error during sign up process', '', {});
+        },
+      });
     }
   }
 }

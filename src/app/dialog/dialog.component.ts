@@ -69,11 +69,8 @@ export class DialogComponent implements OnInit {
             this.itemForm.reset();
             this.dialogRef.close('saved');
           },
-          error: (err) => {
-            this.snackBar.open(
-              'Error while adding the item to the Data Base',
-              err
-            );
+          error: () => {
+            this.snackBar.open('Error while adding the item to the Data Base');
           },
         });
       }
@@ -89,8 +86,8 @@ export class DialogComponent implements OnInit {
         this.itemForm.reset();
         this.dialogRef.close('updated');
       },
-      error: (err) => {
-        this.snackBar.open('Error while editing the item', err);
+      error: () => {
+        this.snackBar.open('Error while editing the item');
       },
     });
   }
