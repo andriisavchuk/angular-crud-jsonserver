@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['login']);
         },
         error: () => {
-          this.snackBar.open('Error during sign up process', '', {});
+          this.snackBar.open('Error during sign up process');
         },
       });
     }

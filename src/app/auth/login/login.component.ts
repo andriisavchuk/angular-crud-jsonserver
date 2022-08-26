@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CryptojsService } from '../../services/cryptojs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +13,44 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    private snackBar: MatSnackBar,
+    private cryptojs: CryptojsService,
+    private router: Router
+  ) {
     this.loginForm = this.formBuilder.group({
-      userEmail: ['', Validators.required, Validators.email],
+      userEmail: ['', [Validators.required, Validators.email]],
       userPassword: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {}
 
-  login(){
-    console.log('login user')
+  login() {
+    if (this.loginForm.valid) {
+      this.api.getUsers().subscribe((res) => {
+        const validatedUser = res.find((user: any) => {
+          let decryptedPassword = this.cryptojs.decryptValue(
+            '123456$#@$^@1ERF',
+            user.userPassword
+          );
+          return (
+            user.userEmail === this.loginForm.value.userEmail &&
+            decryptedPassword === this.loginForm.value.userPassword
+          );
+        });
+
+        if (validatedUser) {
+          this.router.navigate(['dashboard']);
+          this.snackBar.open('You are successfully logged in');
+        } else {
+          this.snackBar.open(
+            'User is not found. Please check your credentials'
+          );
+        }
+      });
+    }
   }
 }

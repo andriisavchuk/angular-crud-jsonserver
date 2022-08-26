@@ -16,14 +16,18 @@ export class ApiService {
   }
 
   updateItemInTheList(data: any, id: number) {
-    return this.http.put<any>(`http://localhost:3000/itemsList/${id}`, data)
+    return this.http.put<any>(`http://localhost:3000/itemsList/${id}`, data);
   }
 
   deleteItemFromList(id: number) {
-    return this.http.delete<any>(`http://localhost:3000/itemsList/${id}`)
+    return this.http.delete<any>(`http://localhost:3000/itemsList/${id}`);
   }
 
   signupUser(data: any) {
     return this.http.post<any>('http://localhost:3000/signedUsers', data);
+  }
+
+  getUsers() {
+    return this.http.get<any>('http://localhost:3000/signedUsers');
   }
 }
