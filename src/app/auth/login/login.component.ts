@@ -45,6 +45,11 @@ export class LoginComponent implements OnInit {
         });
 
         if (validatedUser) {
+          localStorage.setItem(
+            'token',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNsaW50IEVhc3R3b29kIiwiaWF0IjoxNTE2MjM5MDIyfQ.7RePjIHZLSLq8m6xnY6eQEMFHcMvYXiWRFeQWG4IpAU'
+          );
+          localStorage.setItem('userType', 'admin');
           this.loginService.isUserLoggedIn.next(true);
           this.router.navigate(['dashboard']);
           this.snackBar.open('You are successfully logged in');
